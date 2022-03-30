@@ -35,16 +35,20 @@ class GildedRose(object):
             if item.name == GildedRose.AGED_BRIE:
                 self.decrease_sell_in(item)
                 self.update_aged_brie_quality(item)
+                break
 
             elif item.name == GildedRose.BACKSTAGE_PASSES:
                 self.decrease_sell_in(item)
                 self.update_backstage_passes_quality(item)
+                break
+            
             elif item.name == GildedRose.SULFURAS:
                 break
 
             else:
                 self.decrease_sell_in(item)
                 self.update_default_item_quality(item)
+                break
                 
     def decrease_sell_in(self, item:Item)->None:
         item.sell_in -= 1
@@ -52,7 +56,7 @@ class GildedRose(object):
     def update_aged_brie_quality(self, item:Item)->None:
         self.increase_quality(item)
         if item.sell_in < GildedRose.AGED_BRIE_DOUBLE_QUALITY_DECREMENT_SELL_IN_THRESHOLD:
-            increase_quality(item)
+            self.increase_quality(item)
 
     def update_backstage_passes_quality(self, item:Item)->None:
         self.increase_quality(item)
@@ -76,7 +80,7 @@ class GildedRose(object):
             item.quality += 1
 
     def decrease_quality(self, item:Item)->None:
-        if item.quality < GildedRose.MIN_QUALITY:
+        if item.quality > GildedRose.MIN_QUALITY:
             item.quality -= 1
         
 
