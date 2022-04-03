@@ -22,6 +22,8 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(hash(ItemSellIn(0)), hash(items[0].sell_in()))
         # one more day again
         gilded_rose.update_quality(items)
+        self.assertEqual(hash(ItemQuality(0)), hash(items[0].quality()))
+        self.assertEqual(hash(ItemSellIn(-1)), hash(items[0].sell_in()))
 
 if __name__ == '__main__':
     unittest.main()
