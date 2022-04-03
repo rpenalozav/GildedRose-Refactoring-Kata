@@ -1,21 +1,23 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
-from gilded_rose import *
+from gilded_rose import GildedRose
+from item import Item
+from item_factory import ItemFactory
 
 if __name__ == "__main__":
     print ("OMGHAI!")
     items = [
-             Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
-             Item(name="Aged Brie", sell_in=2, quality=0),
-             Item(name="Elixir of the Mongoose", sell_in=5, quality=7),
-             Item(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
-             Item(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80),
-             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20),
-             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
-             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
-             Item(name="Conjured Mana Cake", sell_in=3, quality=6),
-             Item(name="Conjured Mana Cake", sell_in=2, quality=7),  # <-- :O
+             ItemFactory.based_on("+5 Dexterity Vest", 10, 20),
+             ItemFactory.based_on("Aged Brie", 2, 0),
+             ItemFactory.based_on("Elixir of the Mongoose", 5, 7),
+             ItemFactory.based_on("Sulfuras, Hand of Ragnaros", 0, 80),
+             ItemFactory.based_on("Sulfuras, Hand of Ragnaros", -1, 80),
+             ItemFactory.based_on("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+             ItemFactory.based_on("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+             ItemFactory.based_on("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+             ItemFactory.based_on("Conjured Mana Cake", 3, 6),
+             ItemFactory.based_on("Conjured Mana Cake", 2, 7),  # <-- :O
             ]
 
     days = 3
@@ -28,4 +30,4 @@ if __name__ == "__main__":
         for item in items:
             print(item)
         print("")
-        GildedRose(items).update_quality()
+        GildedRose().update_quality(items)

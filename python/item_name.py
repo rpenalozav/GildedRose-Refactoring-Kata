@@ -19,13 +19,5 @@ class ItemName:
     def is_conjured(self):
         return ItemName.CONJURED.__eq__(self._value)
 
-    def equals(self, o: object) -> bool:
-        if self == o:
-            return True
-        if not isinstance(o, ItemName):
-            return False
-        that: ItemName = o
-        return object.__eq__(self._value, that._value)
-
-    def hash_code(self):
-        return object.__hash__(self._value)
+    def __repr__(self):
+        return self._value

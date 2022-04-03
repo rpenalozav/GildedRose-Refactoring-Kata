@@ -1,20 +1,16 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from gilded_rose import Item, GildedRose
+from gilded_rose import GildedRose
+from item_factory import ItemFactory
 
 
 class GildedRoseTest(unittest.TestCase):
-    def test_foo(self):
-        items = [Item("foo", 0, 0)]
-        gilded_rose = GildedRose(items)
-        gilded_rose.update_quality()
-        self.assertEquals("foo", items[0].name)
 
     def test_conjured(self):
-        items = [Item("Conjured Mana Cake", 2, 7)]
-        gilded_rose = GildedRose(items)
-        gilded_rose.update_quality()
+        items = [ItemFactory.based_on("Conjured Mana Cake", 2, 7)]
+        gilded_rose = GildedRose()
+        gilded_rose.update_quality(items)
         self.assertEqual(5, gilded_rose.items[0].quality)
         self.assertEqual(1, gilded_rose.items[0].sell_in)
         # one more day
