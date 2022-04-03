@@ -6,8 +6,7 @@ class ItemQuality:
     MIN_VALUE: int = 0
 
     def __init__(self, value):
-        if value < ItemQuality.MIN_VALUE or value > ItemQuality.MAX_VALUE:
-            self._value: int = value
+        self._value: int = value
 
     def increase(self) -> ItemQuality:
         if self._value == ItemQuality.MAX_VALUE:
@@ -22,13 +21,5 @@ class ItemQuality:
     def reset(self) -> ItemQuality:
         return ItemQuality(ItemQuality.MIN_VALUE)
 
-    def equals(self, o: object) -> bool:
-        if self == o:
-            return True
-        if not isinstance(o, ItemQuality):
-            return False
-        that: ItemQuality = o
-        return object.__eq__(self._value, that._value)
-
-    def hash_code(self):
-        return object.__hash__(self._value)
+    # def __repr__(self):
+    #     return "%s" % self._value
