@@ -14,16 +14,14 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose()
         gilded_rose.update_quality(items)
         # print(items[0].quality())
-        self.assertEqual(ItemQuality(5), items[0].quality())
-        self.assertEqual(ItemSellIn(1), items[0].sell_in())
+        self.assertEqual(hash(ItemQuality(5)), hash(items[0].quality()))
+        self.assertEqual(hash(ItemSellIn(1)), hash(items[0].sell_in()))
         # one more day
         gilded_rose.update_quality(items)
-        # self.assertEqual(3, gilded_rose.items[0].quality())
-        # self.assertEqual(0, gilded_rose.items[0].sell_in())
+        self.assertEqual(hash(ItemQuality(3)), hash(items[0].quality()))
+        self.assertEqual(hash(ItemSellIn(0)), hash(items[0].sell_in()))
         # one more day again
         gilded_rose.update_quality(items)
-        # self.assertEqual(0, gilded_rose.items[0].quality)
-        # self.assertEqual(-1, gilded_rose.items[0].sell_in)
 
 if __name__ == '__main__':
     unittest.main()
