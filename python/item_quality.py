@@ -21,5 +21,5 @@ class ItemQuality:
     def reset(self) -> ItemQuality:
         return ItemQuality(ItemQuality.MIN_VALUE)
 
-    # def __repr__(self):
-    #     return "%s" % self._value
+    def __hash__(self):
+        return hash(self._value)

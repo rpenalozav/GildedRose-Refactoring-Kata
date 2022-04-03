@@ -12,5 +12,5 @@ class ItemSellIn:
     def is_less_than(self, days: int) -> bool:
         return self._value < days
 
-    # def __repr__(self):
-    #     return "%s" % self._value
+    def __hash__(self):
+        return hash(self._value)

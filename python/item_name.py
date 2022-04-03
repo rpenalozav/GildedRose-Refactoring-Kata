@@ -19,5 +19,5 @@ class ItemName:
     def is_conjured(self):
         return ItemName.CONJURED.__eq__(self._value)
 
-    def __repr__(self):
-        return self._value
+    def __hash__(self):
+        return hash(self._value)
